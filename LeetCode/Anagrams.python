@@ -1,0 +1,11 @@
+class Solution:
+    def anagrams(self,strs):
+        dic = {}
+        res = []
+        for s in strs:
+            sorteds = ''.join(sorted(s))
+            dic[sorteds] = [s] if sorteds not in dic else dic[sorteds] + [s]
+        for item in dic:
+            if len(dic[item]) >= 2:
+                res += dic[item]
+        return res

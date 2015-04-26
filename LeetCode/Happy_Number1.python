@@ -1,0 +1,16 @@
+class Solution:
+    # @param {integer} n
+    # @return {boolean}
+    def isHappy(self, n):
+        used = set()
+        while n != 1 and not n in used:
+            used.add(n)
+            next = 0
+            for i in range(len(str(n))):
+                next += int(str(n)[i]) * int(str(n)[i])
+            n = next
+        if n == 1:
+            return True
+        return False
+            
+        

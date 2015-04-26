@@ -1,0 +1,21 @@
+class Solution:
+    def rob(self,num):
+        length = len(num)
+        res = []
+        if length == 0:
+            return 0
+        if length == 1:
+            return num[0]
+        elif length == 2:
+            return max(num[0],num[1])
+        else:
+            res.append(num[0])
+            res.append(num[1])
+            for i in range(2,length):
+                val1 = num[i] + res[i-2]
+                if i-3 >= 0:
+                    val2 = num[i] + res[i-3]
+                else:
+                    val2 = 0
+                res.append(max(val1,val2))
+        return max(res[length-1],res[length-2])

@@ -1,0 +1,15 @@
+class Solution:
+	def combine(self,n,k):
+		res = []
+		item = []
+		self.helper(n,k,item,res)
+		return res
+	def helper(self,n,k,item,res):
+		if len(item) == k:
+			res.append(list(item))
+			return
+		for i in range(1,n+1):
+			if len(item) == 0 or i > item[-1]:
+				item.append(i)
+				self.helper(n,k,item,res)
+				del item[-1]

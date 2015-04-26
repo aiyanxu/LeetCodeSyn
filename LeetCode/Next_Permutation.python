@@ -1,0 +1,22 @@
+class Solution:
+    # @param num, a list of integer
+    # @return a list of integer
+   def nextPermutation(self,num):
+        pivot = -1
+        for i in range(len(num)-1,0,-1):
+            if num[i-1] < num[i]:
+                pivot = i-1
+                break
+        if pivot == -1:
+            return list(reversed(num))
+        else:
+            minimumval = num[pivot]
+            thres = num[pivot+1]
+            target = pivot+1
+            for idx in range(pivot+1,len(num)):
+                if num[idx] > minimumval and num[idx] < thres:
+                    thres = num[idx]
+                    target = idx
+            num[pivot],num[target] = num[target],num[pivot]
+            return num[:pivot+1] + sorted(num[pivot+1:])
+        

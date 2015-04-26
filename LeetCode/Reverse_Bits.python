@@ -1,0 +1,10 @@
+class Solution:
+  def reverseBits(self,n):
+    current = 1
+    res = 0
+    for i in range(32):
+      flag = current & n
+      if flag == current:
+        res += pow(2,31-i)
+      current = current << 1
+    return res

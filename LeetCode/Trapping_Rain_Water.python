@@ -1,0 +1,21 @@
+class Solution:
+    # @param A, a list of integers
+    # @return an integer
+    def trap(slef,A):
+        l = [0] * len(A)
+        tmpmax = 0
+        res = 0
+        for i in range(len(A)):
+            l[i] = tmpmax
+            tmpmax = tmpmax if tmpmax > A[i] else A[i]
+        tmpmax = 0
+        for j in range(len(A)-1,-1,-1):
+            topheight = min(tmpmax,l[j])
+            tmpmax = tmpmax if tmpmax > A[j] else A[j]
+            if topheight <= A[j]:
+                continue
+            else:
+                res += topheight - A[j]
+        return res
+
+        

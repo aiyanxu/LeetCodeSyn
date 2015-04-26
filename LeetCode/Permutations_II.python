@@ -1,0 +1,23 @@
+class Solution:
+    # @return a list of lists of integers
+    def permuteUnique(self, num):
+    	num = sorted(num)
+    	used = [False] * len(num)
+    	res = []
+    	item = []
+    	self.helper(num,used,item,res)
+    	return res
+
+    def helper(self,num,used,item,res):
+    	if len(item) == len(num):
+    		res.append(list(item))
+    		return
+    	for i in range(len(num)):
+    		if not used[i]:
+    			if i > 0 and num[i] == num[i-1] and not used[i-1]:
+    				continue
+    			used[i] = True
+    			item.append(num[i])
+    			self.helper(num,used,item,res)
+    			del item[-1]
+    			used[i] = False

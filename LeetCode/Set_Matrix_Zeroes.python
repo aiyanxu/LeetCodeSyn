@@ -1,0 +1,24 @@
+class Solution:
+    # @param matrix, a list of lists of integers
+    # RETURN NOTHING, MODIFY matrix IN PLACE.
+    def setZeroes(self, matrix):
+        cols = [False] * len(matrix[0])
+        rowLength = len(matrix)
+        colLength = len(matrix[0])
+        rowhasZero = False
+        for i in range(rowLength):
+            for j in range(colLength):
+                if matrix[i][j] == 0:
+                    rowhasZero = True
+                    cols[j] = True
+            if rowhasZero:
+                matrix[i] = [0] * colLength
+                rowhasZero = False
+        for  i in range(len(cols)):
+            if cols[i]:
+                for row in range(rowLength):
+                    matrix[row][i] = 0
+
+
+
+

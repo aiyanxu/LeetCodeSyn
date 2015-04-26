@@ -1,0 +1,9 @@
+class Solution:
+    def maximumGap(self,num):
+        l = sorted(num)
+        maxdiff = 0
+        for i in range(len(l)-1):
+            diff = l[i+1] - l[i]
+            if diff > maxdiff:
+                maxdiff = diff
+        return maxdiff

@@ -1,0 +1,11 @@
+class Solution:
+    def rotate(self,nums,k):
+        size = len(nums)
+        section2size = k % size
+        section1size = size - section2size
+        for i in range(section1size/2):
+            nums[i],nums[section1size-i-1] = nums[section1size-i-1],nums[i]
+        for i in range(section2size/2):
+            nums[i+section1size],nums[section2size-i-1+section1size] = nums[section2size-i-1+section1size],nums[i+section1size]
+        for i in range(size/2):
+            nums[i],nums[size-1-i] = nums[size-1-i],nums[i]

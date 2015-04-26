@@ -1,0 +1,10 @@
+class Solution:
+    def hammingWeight(self,n):
+        current = 1
+        count = 0
+        for i in range(32):
+            res = current & n
+            if res == current:
+                count += 1
+            current = current << 1
+        return count

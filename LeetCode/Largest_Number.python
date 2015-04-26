@@ -1,0 +1,11 @@
+class Solution:
+    # @param num, a list of integers
+    # @return a string
+    def largestNumber(self,num):
+        num.sort(lambda x,y: cmp(str(x)+str(y),str(y)+str(x)),reverse=True)
+        s = ''
+        for i in num:
+            s += str(i)
+        s = "0" if s.lstrip("0") == "" else s.lstrip()
+        return s
+        

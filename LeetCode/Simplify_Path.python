@@ -1,0 +1,27 @@
+class Solution:
+    # @param path, a string
+    # @return a string
+ def simplifyPath(self,path):
+    res=[]
+    con = re.split('(/)',path)
+    con = [item for item in con if item != ""]
+    if len(con) >= 2 and con[-1] == '/':
+      con = con[:-1]
+    for i in range(len(con)):
+      if con[i] == '/':
+        if i > 0 and res[-1] == '/':
+          next
+        else:
+          res.append(con[i])
+      elif con[i] == '.':
+        next
+      elif con[i] == '..':
+        if len(res) > 2:
+          res.pop()
+          res.pop()
+      else:
+        res.append(con[i])
+    if len(res) >= 2 and res[-1] == '/':
+        res = res[:-1]
+    return "".join(res)
+        
